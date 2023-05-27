@@ -2,3 +2,5 @@ creador: Albertin
 ajustes:
   - ajuste1: IMAGENES = TRUE - FALSE
   - ajuste2: WIKIPEDIA = TRUE - FALSE
+  
+  # NO TOCAR, ESTO AUN ESTA BAJO IMPLEMENTACION Y NO AFECTA EN NADA :)
