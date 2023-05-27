@@ -1,14 +1,15 @@
 # Bot-wikipedia-whatsapp
-# a simple job, use wikipedia on whatsapp :)
+a simple job, use wikipedia on whatsapp :)
 
-# Un proyecto simple que hace vincular whatsapp con wikipedia 
-# 
-# Dependencias necesarias:
-#
-# npm install axios
-# npm install node-fetch
-# npm install cheerio
-# npm install whatsapp-web.js
-# npm install qrcode-terminal
+Un proyecto simple que hace vincular whatsapp con wikipedia 
+ 
+> Dependencias necesarias:
 
-# Support contac: Discord Albertin#8802 
+- npm install axios
+- npm install node-fetch
+- npm install cheerio
+- npm install whatsapp-web.js
+- npm install qrcode-terminal
+
+# Support contac: Discord: Albertin#8802 
+https://solo.to/albertin8802
