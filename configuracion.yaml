@@ -1,0 +1,4 @@
+creador: Albertin
+ajustes:
+  - ajuste1: IMAGENES = TRUE - FALSE
+  - ajuste2: WIKIPEDIA = TRUE - FALSE
