@@ -5,7 +5,6 @@ const terminalHandler = require('./complementos/terminal');
 
 const client = new Client({
   authStrategy: new LocalAuth({
-    clientId: "Sofia" // Un identificador
   }),
   puppeteer: {
     args: [
