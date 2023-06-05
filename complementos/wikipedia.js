@@ -3,7 +3,7 @@ const cheerio = require('cheerio');
 
 async function fetchWikipedia(query) {
   try {
-    const response = await axios.get(`https://es.wikipedia.org/wiki/${query}`); // https://es.wikipedia.org/wiki/cesar_vallejo
+    const response = await axios.get(`https://es.wikipedia.org/wiki/${query}`);
     const $ = cheerio.load(response.data);
     const title = $('#firstHeading').text().trim();
     const thumbnail = $('#mw-content-text').find('div.mw-parser-output > div:nth-child(1) > table > tbody > tr:nth-child(2) > td > a > img').attr('src') || `//i.ibb.co/nzqPBpC/http-error-404-not-found.png`;
@@ -32,14 +32,19 @@ async function fetchWikipedia(query) {
   }
 }
 
+function capitalizeFirstLetter(string) {
+  return string.toLowerCase().replace(/\b\w/g, (match) => match.toUpperCase());
+}
+
 function wikipediaHandler(client, message) {
-  const query = message.body.split(' ')[1];
+  const query = message.body.substring(message.body.indexOf(' ') + 1);
   if (!query) {
     client.sendMessage(message.from, `*[❗️𝐈𝐍𝐅𝐎❗️] 𝙴𝚂𝚃𝙰𝚂 𝚄𝚂𝙰𝙽𝙳𝙾 𝙼𝙰𝙻 𝙴𝙻 𝙲𝙾𝙼𝙰𝙽𝙳𝙾!!*\n*𝚄𝚂𝙾 𝙲𝙾𝚁𝚁𝙴𝙲𝚃𝙾:*\n*wiki 𝚙𝚊𝚕𝚊𝚋𝚛𝚊 𝚌𝚕𝚊𝚟𝚎 𝚊 𝚋𝚞𝚜𝚌𝚊𝚛*\n\n*𝙴𝙹𝙴𝙼𝙿𝙻𝙾:*\n*wiki Estrellas*`);
     return;
   }
 
-  fetchWikipedia(query)
+  const capitalizedQuery = capitalizeFirstLetter(query);
+  fetchWikipedia(capitalizedQuery)
     .then((result) => {
       client.sendMessage(message.from, `*𝙰𝚀𝚄𝙸 𝚃𝙸𝙴𝙽𝙴𝚂 𝙻𝙰 𝙸𝙽𝙵𝙾𝚁𝙼𝙰𝙲𝙸𝙾𝙽 𝙴𝙽𝙲𝙾𝙽𝚃𝚁𝙰𝙳𝙰 𝙳𝙴 ${query}*\n\n${result.result.content}`);
     })
